@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+/* ============================
+   Lunim Film Suite — Design System
+   Tailwind v4 CSS-first theme
+   ============================ */
+
+@theme {
+  /* ── Semantic Colors ── */
+  --color-app: #121212;
+  --color-surface: #181A1F;
+  --color-elevated: #20242B;
+  --color-border: #2A2E37;
+  --color-primary: #E8EAED;
+  --color-secondary: #B7BCC4;
+  --color-tertiary: #7A8190;
+  --color-accent: #67D9FF;
+  --color-accent-muted: #4A96B3;
+  --color-warning: #FFBF66;
+  --color-warning-muted: #B3944D;
+  --color-success: #6FD39A;
+  --color-success-muted: #4D9A6D;
+  --color-critical: #FF7373;
+  --color-critical-muted: #B35555;
+  --color-creative: #B99CFF;
+  --color-creative-muted: #8A75BF;
+
+  /* ── Font Families ── */
+  --font-ui: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-script: 'Courier Prime', 'Courier New', monospace;
+}
+
+/* ── Base Resets ── */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-app);
+  color: var(--color-primary);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--color-app); }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3a3f4a; }
+
+/* ============================
+   Animations
+   ============================ */
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-up 0.4s ease-out forwards;
+}
+
+/* Tab Content Transition */
+.tab-content-enter {
+  animation: fade-up 0.3s ease-out forwards;
+}
+
+/* Floating Elements */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+.animate-float-delayed {
+  animation: float 8s ease-in-out 4s infinite;
+}
+
+.stagger-child {
+  opacity: 0;
+  animation: fade-up 0.4s ease-out forwards;
+}
+
+/* Shimmer for progress bars */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(103, 217, 255, 0.08) 40%,
+    rgba(103, 217, 255, 0.18) 50%,
+    rgba(103, 217, 255, 0.08) 60%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* Skeleton pulse for wireframes */
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 0.4; }
+  50%      { opacity: 0.7; }
+}
+.animate-skeleton {
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+/* Gentle spin */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 2.5s linear infinite;
+}
+
+/* Upload zone hover */
+.upload-zone {
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.upload-zone:hover {
+  border-color: var(--color-border);
+  background-color: rgba(32, 36, 43, 0.5);
+}
+
+/* Progress bar fill */
+@keyframes fill-bar {
+  from { width: 0%; }
+}
+.animate-fill-bar {
+  animation: fill-bar 0.8s ease-out forwards;
+}
+
+/* Scan-line over icon */
+@keyframes scanline {
+  0%   { top: 0%; opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+.animate-scanline {
+  animation: scanline 2.5s ease-in-out infinite;
+}
+
+/* Fade in */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+/* Sidebar tab active pulse — very subtle */
+@keyframes tab-enter {
+  from { background-color: transparent; }
+  to   { background-color: var(--color-elevated); }
+}
+.animate-tab-enter {
+  animation: tab-enter 0.3s ease-out forwards;
+}
